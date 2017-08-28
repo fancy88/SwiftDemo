@@ -25,7 +25,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("click", for: .normal)
         button.backgroundColor = UIColor.cyan
         button.setTitleColor(UIColor.red, for: .normal)
-        button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
+        button.tag = 10000
+        button.addTarget(self, action: #selector(buttonClick(button:)), for: .touchUpInside)
         self.view.addSubview(button)
         
         let label = UILabel.init(frame: CGRect(x: self.view.frame.size.width / 2.0 - 50, y: 200, width: 100, height: 30))
@@ -40,11 +41,27 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
         self.view.addSubview(textField)
         
+        let nextBtn = UIButton(frame:CGRect(x:self.view.frame.size.width / 2.0 - 50, y:300, width:100, height:30))
+        nextBtn.setTitle("click", for: .normal)
+        nextBtn.tag = 10001
+        nextBtn.backgroundColor = UIColor.cyan
+        nextBtn.setTitleColor(UIColor.red, for: .normal)
+        nextBtn.addTarget(self, action: #selector(buttonClick(button:)), for: .touchUpInside)
+        self.view.addSubview(nextBtn)
+        
     }
     
-    func buttonClick(){
+    func buttonClick(button: UIButton){
         print("tapped")
-        self.navigationController?.popViewController(animated: true)
+        if button.tag == 10000 {
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        } else if button.tag == 10001 {
+            let VC = TestViewController()
+            self.navigationController?.pushViewController(VC, animated: true)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
