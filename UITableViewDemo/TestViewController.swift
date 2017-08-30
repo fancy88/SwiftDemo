@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestViewController: UIViewController, UITableViewDelegate{
+class TestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var tableView = UITableView()
     
@@ -18,7 +18,8 @@ class TestViewController: UIViewController, UITableViewDelegate{
         self.title = "Test"
 
         tableView = UITableView.init(frame: self.view.frame)
-        tableView.delegate = self
+        tableView.delegate   = self
+        tableView.dataSource = self
         tableView.tableFooterView = UIView.init()
         self.view.addSubview(tableView)
         // Do any additional setup after loading the view.
@@ -29,7 +30,25 @@ class TestViewController: UIViewController, UITableViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: UITableViewDelegate & UITableViewDataSource
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellID = "cellID"
+        let cell  = TestCell.init(style: .default, reuseIdentifier: cellID)
+        return cell
 
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("click %ld row", indexPath.row)
+    }
+    
     /*
     // MARK: - Navigation
 
