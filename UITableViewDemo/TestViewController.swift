@@ -47,6 +47,8 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("click %ld row", indexPath.row)
+        let VC = CollectionViewController()
+        self.navigationController?.pushViewController(VC, animated: true)
     }
     
     /*
