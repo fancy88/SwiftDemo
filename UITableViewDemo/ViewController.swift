@@ -38,6 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cellID = "cellID"
         let cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: cellID)
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = "Hello"
         
         return cell
@@ -51,7 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.pushViewController(VC, animated: true)
         
     }
-
 
 }
 

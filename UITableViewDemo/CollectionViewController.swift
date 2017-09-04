@@ -55,7 +55,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate,  UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("click indexPath.item", indexPath.item)
+        if indexPath.item % 2 == 0 {
+            print("click indexPath.item", indexPath.item)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
 
     /*

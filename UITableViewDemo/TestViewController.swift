@@ -40,7 +40,6 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cellID = "cellID"
         let cell  = TestCell.init(style: .default, reuseIdentifier: cellID)
-      //  cell.label.text = (indexPath.row as? String)
         return cell
 
     }
