@@ -10,6 +10,7 @@ import UIKit
 
 class TestCell: UITableViewCell {
 
+    var label = UILabel()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +32,7 @@ class TestCell: UITableViewCell {
     
     func getUI() {
         
-        let label = UILabel.init(frame: CGRect(x: 13, y: 7, width: 100,height: 30))
+        label = UILabel.init(frame: CGRect(x: 13, y: 7, width: 100,height: 30))
         label.backgroundColor = UIColor.cyan;
         label.text = "Hello"
         label.textAlignment = .center

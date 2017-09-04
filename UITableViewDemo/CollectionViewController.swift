@@ -8,10 +8,9 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class CollectionViewController: UIViewController, UICollectionViewDelegate,  UICollectionViewDataSource{
     
-    var collectionView = UICollectionView()
-    var cellIdentifier = "Cell"
+    var cellIdentifier = "MyCollectionViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +20,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let height = self.view.frame.size.height
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width:80,height:35)
+        layout.itemSize = CGSize(width:80,height:80)
         //列间距,行间距,偏移
         layout.minimumInteritemSpacing = 15
-        layout.minimumLineSpacing = 30
+        layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
-        collectionView = UICollectionView(frame: CGRect(x:0, y:0, width: width, height: height), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect(x:0, y:0, width: width, height: height), collectionViewLayout: layout)
         collectionView.delegate   = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.white
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         self.view.addSubview(collectionView)
         // Do any additional setup after loading the view.
@@ -49,10 +49,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MyCollectionViewCell
+        cell.backgroundColor = UIColor.red
         cell.titleLabel.text = "Hello"
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("click indexPath.item", indexPath.item)
+    }
 
     /*
     // MARK: - Navigation
