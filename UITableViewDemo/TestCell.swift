@@ -41,7 +41,5 @@ class TestCell: UITableViewCell {
         let imgView = UIImageView.init(frame: CGRect(x: UIScreen.main.bounds.size.width - 50, y: 7, width: 30,height: 30))
         imgView.backgroundColor = UIColor.green
         self.addSubview(imgView)
-
     }
-    
 }
